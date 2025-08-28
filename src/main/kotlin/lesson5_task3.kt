@@ -1,28 +1,25 @@
 import kotlin.random.Random
 
 fun task3() {
-    val winningNumber1 = 27
-    var winningNumber2 = 9
+
+    val listOfWinningNumbers = listOf(9, 27)
 
     println("Введите первое число из вашего лотерейного билета:")
     val num1 = readln().toInt()
     println("Введите второе число из вашего лотерейного билета:")
     val num2 = readln().toInt()
 
+    val listOfUserNumbers = listOf(num1, num2)
+    val resultList = listOfWinningNumbers.intersect(listOfUserNumbers)
 
-    when {
-        (num1 == winningNumber1 && num2 == winningNumber2) || (num2 == winningNumber1 && num1 == winningNumber2) -> println(
-            "Поздравляем! Вы выиграли главный приз!"
-        )
-
-        (num1 != winningNumber1 && num2 == winningNumber2) || (num2 == winningNumber1 && num1 != winningNumber2) ||
-                (num1 == winningNumber2 && num2 != winningNumber1) || (num1 == winningNumber1 && num2 != winningNumber2) -> println(
-            "Вы выиграли утешительный приз!"
-        )
-
-        else -> println("Неудача!")
+    if (resultList.size == 2) {
+        println("Поздравляем Вы отгадали все числа! Вы выиграли главный приз!")
+    } else if (resultList.size == 1)
+        println("Вы отгадали одно число и выиграли утешительный приз!")
+    else {
+        println("Неудача!")
     }
-    println("Выиграшные числа: $winningNumber1 $winningNumber2")
+    println("Выиграшные числа: $listOfWinningNumbers")
 }
 
 fun main() {
