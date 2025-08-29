@@ -5,17 +5,14 @@ fun task5() {
     println("Введите ваши числа: ")
     val userList = listOf(readln().toInt(), readln().toInt(), readln().toInt())
     val result = winningList.intersect(userList)
-    if (result.size == 3) {
-        println("Поздравляем вы угадали 3 числа и выиграли джекпот!")
-    } else if (result.size == 2) {
-        println("Вы угадали 2 числа, вы получите крупный приз!")
-    } else if (result.size == 1) {
-        println("Вы угадали 1 число, вам будет выплачен утишительный приз")
-    } else {
-        println("Вы не угадали ни одного числа((")
+    when (result.size) {
+        3 -> println("Поздравляем вы угадали 3 числа и выиграли джекпот!")
+        2 -> println("Вы угадали 2 числа, вы получите крупный приз!")
+        1 -> println("Вы угадали 1 число, вам будет выплачен утешительный приз")
+        else -> println("Вы не угадали ни одного числа((")
     }
 
-    println("Список выиграшных чисел: $winningList")
+    println("Список победных чисел: $winningList")
 }
 
 fun main() {
